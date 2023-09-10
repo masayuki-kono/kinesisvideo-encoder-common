@@ -7,12 +7,10 @@ set(CMAKE_CXX_STANDARD 11)
 # find_package(FFmpeg REQUIRED)
 find_package(aws_common REQUIRED)
 
+###########
+## Build ##
+###########
 
-#############
-## Compile ##
-#############
-
-# add the publisher example
 add_library(${PROJECT_NAME} SHARED
   src/h264_encoder.cpp
   src/h264_encoder_node_config.cpp
@@ -29,7 +27,6 @@ target_link_libraries(${PROJECT_NAME}
   swscale
   dl
 )
-
 
 #############
 ## Install ##
@@ -61,7 +58,6 @@ CONFIGURE_FILE(commonConfigVersion.cmake.in
 INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake DESTINATION share/${PROJECT_NAME}/cmake)
 INSTALL(FILES ${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake DESTINATION share/${PROJECT_NAME}/cmake)
 INSTALL(EXPORT ${PROJECT_NAME}-targets DESTINATION share/${PROJECT_NAME}/cmake)
-
 
 #############
 ## Tests ##
